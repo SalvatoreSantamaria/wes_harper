@@ -15,7 +15,7 @@ def index(req):
   }
   return render(req, 'tickets/index.html', context)
 
-def new(req):
+def new(req):#check to see if the users is logged in, and then redender the new form
   if 'user_id' not in req.session:
     return redirect('users:new')
 
