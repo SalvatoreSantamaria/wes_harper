@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Ticket
+from .models import Ticket #make sure import the models
 from ..users.models import User
 
 # Create your views here.
@@ -15,17 +15,18 @@ def index(req):
   }
   return render(req, 'tickets/index.html', context)
 
-def new(req):#check to see if the users is logged in, and then redender the new form
+def new(req):#check to see if the users is logged in, and then render the new form
   if 'user_id' not in req.session:
     return redirect('users:new')
 
   context = {
-    "assignees": User.objects.all()
+    "assignees": User.objects.all() #get all the different users. to check, go to the  new.html page, and add {{ assignees }} . see the new.html page for reference to see how to make all assignees options
   }
   return render(req, 'tickets/new.html', context) # ie '/' aka the homepage.
 
 def create(req):
-  if 'user_id' not in req.session:
+  #to see what happens, use print(req.POST)
+  if 'user_id' not in req.session: 
     return redirect('users:new')
 
   if req.method != 'POST':
