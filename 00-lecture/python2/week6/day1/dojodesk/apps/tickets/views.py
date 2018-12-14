@@ -6,7 +6,7 @@ from ..users.models import User
 # Create your views here.
 def index(req):
   if 'user_id' not in req.session:
-    return redirect('users:new')
+    return redirect('users:new')# redirect is changing from /users/mew for the reverse lookup
 
   context = {
     'user_tickets': Ticket.objects.filter(assignee=req.session['user_id']),
@@ -22,7 +22,7 @@ def new(req):#check to see if the users is logged in, and then redender the new 
   context = {
     "assignees": User.objects.all()
   }
-  return render(req, 'tickets/new.html', context)
+  return render(req, 'tickets/new.html', context) # ie '/' aka the homepage.
 
 def create(req):
   if 'user_id' not in req.session:
