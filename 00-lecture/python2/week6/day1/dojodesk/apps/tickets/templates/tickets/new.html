@@ -8,7 +8,7 @@
       {% endfor %}
     </ul>
   {% endif %}
-  <form action="{% url 'tickets:create' %}" method="post"> changed from /users/create/
+  <form action="{% url 'tickets:create' %}" method="post"> changed from "/users/create/" to "{% url 'tickets:create' %}"
     {% csrf_token %}
     <label for="title">Title:</label>
     <input type="text" name="title" placeholder="Change Request">
