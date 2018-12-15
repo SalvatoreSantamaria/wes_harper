@@ -17,13 +17,13 @@
     <tbody>
       {% for ticket in user_tickets %}
         <tr>
-          <td><a href="{% url 'tickets:show' ticket.id %}">{{ ticket.title }}</a></td>
+          <td><a href="{% url 'tickets:show' ticket.id %}">{{ ticket.title }}</a></td> ticket.id is an optional third parameter. this is going to the show page, ie "localhost:8000/1/show" or /2/show, etc
           <td>{{ ticket.description|truncatechars:15 }}</td>
           <td>{{ ticket.priority }}</td>
           <td>{{ ticket.status }}</td>
           <td>{{ ticket.assignee.first_name }} {{ ticket.assignee.last_name }} - {{ ticket.assignee.email }}</td>
           <td>
-            <a href="{% url 'tickets:edit' ticket.id %}" class="button">Edit</a>
+            <a href="{% url 'tickets:edit' ticket.id %}" class="button">Edit</a> 
             <form action="{% url 'tickets:delete' ticket.id %}" method="post">
               {% csrf_token %}
               <input type="submit" value="Delete">
