@@ -32,7 +32,7 @@ class TicketManager(models.Manager):
   def create_ticket(self, form_data):
     # get user
     # doesn't need try/catch due to validations from self.validate
-    assignee = User.objects.get(id=form_data['assignee'])
+    assignee = User.objects.get(id=form_data['assignee']) #w7v1 @ 40 minutes : http://learn.codingdojo.com/m/83/4686/30181. This takes in the form data.
     self.create(
       title = form_data['title'],
       description = form_data['description'],
