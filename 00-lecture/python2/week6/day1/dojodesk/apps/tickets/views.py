@@ -38,10 +38,10 @@ def create(req):
       messages.error(req, error)
     return redirect('tickets:new')
 
-  Ticket.objects.create_ticket(req.POST)
+  Ticket.objects.create_ticket(req.POST) #w7v1 @ 40 minutes : http://learn.codingdojo.com/m/83/4686/30181. This takes in the form data.
   return redirect('tickets:index')
 
-def show(req, ticket_id):
+def show(req, ticket_id): #accept id from the route
   if 'user_id' not in req.session:
     return redirect('users:new')
 
